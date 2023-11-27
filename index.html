@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Bar Filter Table</title>
+
+    <style>
+        h2{
+            display: flex;
+            justify-content: center;
+        }
+        table{
+            font-family: arial, sans-serif;
+            width: 100%;
+            text-align: left;
+            border-collapse: collapse;
+        }
+        td{
+            border: 1px solid black;
+            padding: 8px;
+        }
+        th{
+            border: 1px solid black;
+            background-color: rgb(249, 221, 221);
+            padding: 8px;
+        }
+        input{
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 7px;
+        }
+    </style>
+
+</head>
+<body>
+
+<h2>Search Bar & Filter Table</h2>
+
+<input type="text" name="" id="myInput" placeholder="seach for name..." onkeyup="searchFunc()">
+
+<table id="myTable">
+    <tr class="header">
+        <th> Name </th>
+        <th> Degree </th>
+        <th> Profession</th>
+    </tr>
+    <tr>
+        <td>Dogesh</td>
+        <td>PhD</td>
+        <td>CEO</td>
+    </tr>
+    <tr>
+        <td>George</td>
+        <td>MSC</td>
+        <td>Developer</td>
+    </tr>
+    <tr>
+        <td>Smith</td>
+        <td>Law</td>
+        <td>Lawyer</td>
+    </tr>
+    <tr>
+        <td>John</td>
+        <td>PhD</td>
+        <td>Teacher</td>
+    </tr>
+    <tr>
+        <td>Leena</td>
+        <td>BSC</td>
+        <td>Manager</td>
+    </tr>
+    <tr>
+        <td>Dogellina</td>
+        <td>BTech</td>
+        <td>Youtuber</td>
+    </tr>
+    <tr>
+        <td>Dogendra</td>
+        <td>PhD</td>
+        <td>Doctor</td>
+    </tr>
+    <tr>
+        <td>Pappu</td>
+        <td>PhD</td>
+        <td>Driver</td>
+    </tr>
+    <tr>
+        <td>Dogesh</td>
+        <td>BE</td>
+        <td>Mech Engg.</td>
+    </tr>
+</table>
+
+<script>
+
+const searchFunc = () => {
+   let filter = document.getElementById("myInput").value.toUpperCase()
+
+   let myTable = document.getElementById("myTable")
+
+   let tr = myTable.getElementsByTagName('tr')
+
+
+
+    for (let i = 0; i < tr.length; i++) {
+        
+        let td = tr[i].getElementsByTagName('td')[0]
+
+        if (td) {
+
+            let textValue = td.textContent || td.innerHTML
+            
+            if (textValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = ""
+            } else {
+                tr[i].style.display = "none"
+            }
+        }
+    }
+ 
+}
+    
+
+
+
+</script>
+
+</body>
+</html>
